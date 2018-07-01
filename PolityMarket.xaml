@@ -1,0 +1,30 @@
+﻿<Page x:Class="Polity.PolityMarket"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+	Title="Market View">
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" Text="Supply"/>
+        <TextBlock Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" Text="Demand"/>
+        <TextBlock Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" Text="Prices"/>
+        <ListBox Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Path=Supply.Items}"/>
+        <ListBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Path=Demand.Items}"/>
+        <ListBox Grid.Row="1" Grid.Column="2" ItemsSource="{Binding Path=Prices}"/>
+      
+    </Grid>
+</Page>

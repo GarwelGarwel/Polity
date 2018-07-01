@@ -1,0 +1,39 @@
+﻿<Page x:Class="Polity.PolityEconomy"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+	Title="PolityEconomy">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock Text="Income Tax" Grid.Row="0" Grid.Column="0"/>
+        <TextBlock Name="incomeTax" Text="{Binding Path=IncomeTaxRate}" Grid.Row="0" Grid.Column="1"/>
+        <Button Name="incomeTaxUp" Click="Click_IncomeTaxUp" Grid.Row="0" Grid.Column="2">Up</Button>
+        <Button Name="incomeTaxDown" Click="Click_IncomeTaxDown" Grid.Row="0" Grid.Column="3">Down</Button>
+
+        <TextBlock Text="Welfare Subsidy" Grid.Row="1" Grid.Column="0"/>
+        <TextBlock Name="welfareSubsidy" Text="{Binding Path=WelfareSubsidy}" Grid.Row="1" Grid.Column="1"/>
+        <Button Name="welfareSubsidyUp" Click="Click_WelfareSubsidyUp" Grid.Row="1" Grid.Column="2">Up</Button>
+        <Button Name="welfareSubsidyDown" Click="Click_WelfareSubsidyDown" Grid.Row="1" Grid.Column="3">Down</Button>
+
+        <TextBlock Text="Bureaucrat Salary" Grid.Row="2" Grid.Column="0"/>
+        <TextBlock Name="bureaucratSalary" Text="{Binding Path=BureaucratSalary}" Grid.Row="2" Grid.Column="1"/>
+        <Button Name="bureaucratSalaryUp" Click="Click_BureaucratSalaryUp" Grid.Row="2" Grid.Column="2">Up</Button>
+        <Button Name="bureaucratSalaryDown" Click="Click_BureaucratSalaryDown" Grid.Row="2" Grid.Column="3">Down</Button>
+    </Grid>
+
+</Page>
