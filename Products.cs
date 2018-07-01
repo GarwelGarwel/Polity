@@ -2,29 +2,18 @@
 
 namespace Polity
 {
+    /// <summary>
+    /// An inventory of Product items
+    /// </summary>
     public class Products
     {
         SortedList<ProductType, double> products = new SortedList<ProductType,double>();
 
-        public List<Product> Items
-        {
-            get
-            {
-                List<Product> res = new List<Product>(products.Count);
-                foreach (KeyValuePair<ProductType, double> kvp in products)
-                    res.Add(new Product(kvp.Key, kvp.Value));
-                return res;
-            }
-        }
+        public List<Product> Items => (List<Product>)products.Keys;
 
         public Product this[ProductType pt]
         {
-            get
-            {
-                if (products.ContainsKey(pt))
-                    return new Product(pt, products[pt]);
-                else return new Product(pt, 0);
-            }
+            get => new Product(pt, products.ContainsKey(pt) ? products[pt] : 0);
             set
             {
                 if (value == null)
@@ -47,11 +36,20 @@ namespace Polity
 
         public void Remove(Product p)
         {
-            if (products.ContainsKey(p.Type)) products[p.Type] += p.Amount;
-            else products.Add(p.Type, - p.Amount);
+            if (products.ContainsKey(p.Type)) products[p.Type] -= p.Amount;
+            else products.Add(p.Type, -p.Amount);
         }
 
         public void RemoveAll(ProductType pt) => products.Remove(pt);
+
+        /// <summary>
+        /// Remove all records with 0 amount of product
+        /// </summary>
+        public void ClearEmpty()
+        {
+            foreach (KeyValuePair<ProductType, double> kvp in products)
+                if (kvp.Value <= 0) products.Remove(kvp.Key);
+        }
 
         public int Count => products.Count;
 
